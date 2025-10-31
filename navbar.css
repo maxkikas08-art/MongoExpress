@@ -1,0 +1,244 @@
+/* ---------- General Body ---------- */
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  background-color: #f4f4f4;
+  overflow-x: hidden;
+}
+
+/* ---------- Navbar Container ---------- */
+nav {
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  padding: 10px 20px;
+  margin: 16px;
+  border-radius: 12px;
+  background-color: #222;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+  box-sizing: border-box;
+  overflow: hidden;
+  position: relative; /* Added for mobile pfp positioning */
+}
+
+/* ---------- Navbar Top (Logo) ---------- */
+.nav-top {
+  font-weight: bold;
+  font-size: 22px;
+  color: white;
+  padding: 10px 20px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  display: flex;
+}
+
+/* ---------- Navbar Center (Search + Hamburger) ---------- */
+.nav-center {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+}
+
+.search-bar {
+  flex: 1;
+  max-width: 450px;
+  min-width: 150px;
+  padding: 8px 15px;
+  border-radius: 25px;
+  border: none;
+  outline: none;
+  font-size: 16px;
+  box-sizing: border-box;
+  transform: translateX(-4px);
+}
+
+.hamburger {
+  display: none;
+  font-size: 28px;
+  cursor: pointer;
+  color: white;
+  margin-left: 10px;
+  transition: all 0.3s ease;
+}
+
+/* ---------- Links and Profile Picture Box ---------- */
+.nav-links {
+  display: flex;
+  justify-content: flex-end;
+  gap: 20px;
+  background-color: #333;
+  padding: 12px 24px;
+  border-radius: 16px;
+  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.2);
+  margin-top: 14px;
+}
+
+.nav-links a {
+  color: white;
+  text-decoration: none;
+  font-weight: bold;
+  font-size: 16px;
+  transition: all 0.3s ease;
+}
+
+.nav-links a:hover {
+  color: #919191;
+}
+
+/* Profile picture styles */
+.nav-links img {
+  width: 35px;
+  height: 35px;
+  border-radius: 50%;
+  object-fit: cover;
+  cursor: pointer;
+  transition: transform 0.3s ease;
+  flex-shrink: 0;
+}
+
+.nav-links img:hover {
+  transform: scale(1.1);
+}
+
+/* ---------- Mobile View ---------- */
+@media (max-width: 600px) {
+  nav {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .nav-top {
+    margin-bottom: 8px;
+    padding-left: 10px;
+  }
+
+  .nav-center {
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .search-bar {
+    flex: 1;
+    min-width: 120px;
+    margin-right: 10px;
+    transform: translateX(-4px);
+  }
+
+  .hamburger {
+    display: block;
+    font-size: 28px;
+    cursor: pointer;
+    color: white;
+    transition: all 0.3s ease;
+  }
+
+  .nav-links {
+    display: none;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    background-color: #333;
+    padding: 12px 0;
+    border-radius: 12px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+    margin-top: 8px;
+    transform: translateY(-30px);
+    opacity: 0;
+    transition: transform 0.3s ease, opacity 0.3s ease;
+  }
+
+  .nav-links.active {
+    display: flex;
+    transform: translateY(0);
+    opacity: 1;
+  }
+
+  .nav-links a {
+    padding: 10px 0;
+    text-align: center;
+    width: 100%;
+  }
+
+  /* Hide the normal profile picture in nav-links */
+  .nav-links img {
+    display: none;
+  }
+
+  /* --- Mobile PFP above hamburger --- */
+  #profilePictureContainer {
+    position: absolute;
+    top: 12px;
+    right: 60px;
+    z-index: 999;
+    display: none;
+  }
+
+  #profilePictureContainer img {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background-color: white;
+    border: 2px solid #333;
+    object-fit: cover;
+  }
+}
+
+/* ---------- Desktop View ---------- */
+@media (min-width: 601px) {
+  nav {
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    padding-top: 14px;
+    padding-bottom: 14px;
+  }
+
+  .nav-top {
+    margin-bottom: 0;
+    padding: 0 15px;
+  }
+
+  .nav-center {
+    flex: 1;
+    justify-content: center;
+    margin: 0 20px;
+  }
+
+  .search-bar {
+    width: 100%;
+    max-width: 700px;
+    transform: translateX(-4px);
+  }
+
+  .hamburger {
+    display: none;
+  }
+
+  .nav-links {
+    display: flex;
+    justify-content: flex-end;
+    margin-top: 0;
+    background: #333;
+    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.2);
+    padding: 10px 24px;
+    gap: 25px;
+    border-radius: 16px;
+  }
+
+  .nav-links a {
+    color: white;
+    font-size: 17px;
+    font-weight: bold;
+  }
+
+  .nav-links a:hover {
+    color: #ccc;
+  }
+
+  #profilePictureContainer {
+    display: none; /* Hidden on desktop */
+  }
+  
+}
